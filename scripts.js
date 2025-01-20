@@ -27,11 +27,23 @@ loginform.addEventListener('submit',function(e){
     const username = document.querySelector('#userName').value.trim();
     const password = document.querySelector('#Password').value.trim();
     const errorContainer = document.querySelector('#errorMessage');
+    const successContainer = document.querySelector('#successMessage');
   
-    const user
-   // if(!username || !password){
-   //     errorContainer.textContent ='Please fill in all fields';
-   // }else{
-   //     errorContainer.textContent = '';
-    //}
+
+    if(!username || !password){
+        errorContainer.textContent ='Please fill in all fields';
+       }else{
+        const user = users.find(user => user.username === username && user.password === password);
+        if(user){
+            errorContainer.textContent = '';
+            successContainer.textContent=`Welcome ${user.role}`;
+           //alert(`Welcome ${user.role}`);
+        }else{
+            errorContainer.textContent = 'Invalid username or password';
+        }
+       }
+   
+
+  
+
 })
