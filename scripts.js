@@ -76,7 +76,19 @@ function displayContent(role){
         <h2> Welcome ${role}</h2>
         <p>You have access to view content</p>`
     }
+
+   const logoutButton = document.createElement('button');
+   logoutButton.textContent = 'Logout';
+   logoutButton.classList.add('logout-button');
+
+   logoutButton.addEventListener('click',logout);
+
+   contentDiv.appendChild(logoutButton);
+    
     document.body.appendChild(contentDiv);
 }
-
+const logout = () => {
+    localStorage.removeItem('userRole');
+    location.reload();
+}
 
